@@ -123,11 +123,11 @@
 
   <!-- Brands Logos Trust Bar -->
   <div class="brands-bar">
-    <img src="direxlab.jpg" alt="DireX Lab" class="brand-logo" title="DireX Lab">
-    <img src="koreanglow.jpg" alt="koreanGLOW" class="brand-logo" title="koreanGLOW">
-    <img src="cerave.jpg" alt="CeraVe" class="brand-logo" title="CeraVe">
-    <img src="quantuig.jpg" alt="Quantu-IG" class="brand-logo" title="Quantu-IG">
-    <img src="akcleaning.jpg" alt="AK Cleaning" class="brand-logo" title="AK Cleaning">
+    <img src="direxlab.jpg" alt="DireX Lab" class="brand-logo" title="DireX Lab">[cite: 11]
+    <img src="koreanglow.jpg" alt="koreanGLOW" class="brand-logo" title="koreanGLOW">[cite: 12]
+    <img src="cerave.jpg" alt="CeraVe" class="brand-logo" title="CeraVe">[cite: 9]
+    <img src="quantuig.jpg" alt="Quantu-IG" class="brand-logo" title="Quantu-IG">[cite: 14]
+    <img src="akcleaning.jpg" alt="AK Cleaning" class="brand-logo" title="AK Cleaning">[cite: 13]
   </div>
 
   <!-- About & Experience -->
@@ -217,14 +217,13 @@
     </div>
   </div>
 
-  <!-- Live Feed Links (Top 10 Feed Assets - Cleaned & Categorized) -->
+  <!-- Live Feed Links (Top 10 Feed Assets - No Brand Names) -->
   <div class="card">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
       <div>
         <h3>Live on Instagram</h3>
         <p class="text-sm mute" id="fcount">0 posts</p>
       </div>
-      <div id="ff"></div>
     </div>
     <div id="fg" class="grid" style="grid-template-columns: repeat(3, 1fr);"></div>
   </div>
@@ -304,40 +303,24 @@ $('copy').onclick = async () => {
   }
 };
 
-/* feed (Top 10 Instagram Assets - Correctly Mapped) */
+/* feed (Top 10 Instagram Assets - Cleaned Without Brand Names) */
 const F = [
-  ['DVeJTZHCLiM', 'koreanGLOW'],
-  ['DVmG96gAt_q', 'koreanGLOW'],
-  ['DVqcBRJiOF3', 'koreanGLOW'],
-  ['DVtyhlAiBdC', 'Quantu-IG'],
-  ['DVy16_ACMEg', 'Quantu-IG'],
-  ['Dd9GuVgCHHc', 'AK Cleaning'],
-  ['DdZH6BqK2Vt', 'AK Cleaning'],
-  ['DdHbmDThE7L', 'AK Cleaning'],
-  ['DdE2xXUBEEZ', 'AK Cleaning'],
-  ['DdRusmmP9Aw', 'AK Cleaning']
+  'DVeJTZHCLiM',
+  'DVmG96gAt_q',
+  'DVqcBRJiOF3',
+  'DVtyhlAiBdC',
+  'DVy16_ACMEg',
+  'Dd9GuVgCHHc',
+  'DdZH6BqK2Vt',
+  'DdHbmDThE7L',
+  'DdE2xXUBEEZ',
+  'DdRusmmP9Aw'
 ];
-let ft = 'All';
-const fl = [['All', 'All (10)'], ['koreanGLOW', 'koreanGLOW'], ['Quantu-IG', 'Quantu-IG'], ['AK Cleaning', 'AK Cleaning']];
 
-function fdraw() {
-  document.querySelectorAll('#ff button').forEach(b => b.className = 'chip' + (b.dataset.k === ft ? ' on' : ''));
-  const r = F.map((x, i) => [x, i]).filter(([x]) => ft === 'All' || x[1] === ft);
-  $('fcount').textContent = r.length + ' posts';
-  $('fg').innerHTML = r.map(([x, i]) => {
-    return `<div class="card" style="margin-bottom:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span class="gold" style="font-size:1.1rem; font-weight:bold;">#${String(i + 1).padStart(2, '0')}</span><span class="chip">${x[1]}</span></div><p class="text-sm mute">Top Performance Asset</p><a class="text-sm" href="https://www.instagram.com/p/${x[0]}" target="_blank" rel="noopener">Open on Instagram ↗</a></div>`;
-  }).join('');
-}
-
-fl.forEach(([k, t]) => {
-  const b = document.createElement('button');
-  b.className = 'chip';
-  b.dataset.k = k;
-  b.textContent = t;
-  b.onclick = () => { ft = k; fdraw(); };
-  $('ff').appendChild(b);
-});
-fdraw();
+$('fcount').textContent = F.length + ' posts';
+$('fg').innerHTML = F.map((id, i) => {
+  return `<div class="card" style="margin-bottom:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span class="gold" style="font-size:1.1rem; font-weight:bold;">#${String(i + 1).padStart(2, '0')}</span><span class="chip">Reel Asset</span></div><p class="text-sm mute">Top Performance Creative</p><a class="text-sm" href="https://www.instagram.com/p/${id}" target="_blank" rel="noopener">Open on Instagram ↗</a></div>`;
+}).join('');
 </script>
 </body>
 </html>
